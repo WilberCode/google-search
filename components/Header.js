@@ -10,9 +10,7 @@ const Header = () => {
     const Router = useRouter()
 
     const searchInputRef = useRef(null)
-    useEffect(() => {
-        searchInputRef.current.value = Router.query.term
-    }, [0])
+ 
     const search =  (e) => {
         e.preventDefault()
         const term  = searchInputRef.current.value
@@ -30,7 +28,7 @@ const Header = () => {
                     />
                     <form   className="ml-10 mr-5 flex items-center  w-full  sm:max-w-xl lg:max-w-2xl   border border-gray-200  hover:shadow-lg focus-within:shadow-lg px-6 py-3 rounded-full" > 
                         
-                            <input ref={searchInputRef}   type="text" className="focus:outline-none flex-grow " />
+                            <input ref={searchInputRef}  defaultValue={Router.query.term}  type="text" className="focus:outline-none flex-grow " />
                             <XIcon onClick={()=>(searchInputRef.current.value = "")}  className=" text-gray-500 h-7 transform transition duration-100  sm:mr-3 hover:scale-125 cursor-pointer " />
                             <div className="hidden sm:flex  border-l-2 border-gray-300 pl-4 space-x-2  " >
                                 <MicrophoneIcon  className="h-6 text-blue-500 " /> 
